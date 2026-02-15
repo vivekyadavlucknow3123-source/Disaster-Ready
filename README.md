@@ -1,2 +1,2 @@
-# Exam_Seating_System
+# Disaster_Ready
 First SIH Project
