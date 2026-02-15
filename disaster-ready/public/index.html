@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisasterReady - Natural Disaster Preparedness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trust-blue': '#1e40af',
+                        'emergency-red': '#dc2626',
+                        'safety-green': '#16a34a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(30, 64, 175, 0.7), rgba(30, 64, 175, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e5e7eb" width="1200" height="600"/><path fill="%23d1d5db" d="M0 300L50 280C100 260 200 220 300 200C400 180 500 180 600 200C700 220 800 260 900 280C1000 300 1100 300 1150 300L1200 300V600H1150C1100 600 1000 600 900 600C800 600 700 600 600 600C500 600 400 600 300 600C200 600 100 600 50 600H0V300Z"/></svg>') center/cover;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-trust-blue rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold text-trust-blue">DisasterReady</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">About</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Resources</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Emergency Contacts</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Preparedness Kits</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Blog</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Contact Us</a>
+                    <button class="bg-emergency-red text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                        Get Help Now
+                    </button>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="lg:hidden hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">About</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Resources</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Emergency Contacts</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Preparedness Kits</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Blog</a>
+                    <a href="#" class="text-gray-700 hover:text-trust-blue font-medium">Contact Us</a>
+                    <button class="bg-emergency-red text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors w-fit">
+                        Get Help Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-96 flex items-center justify-center text-center text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Be Prepared. Stay Safe. Act Fast.</h1>
+            <p class="text-xl mb-8 opacity-90">Your comprehensive guide to natural disaster preparedness and emergency response</p>
+            <button class="bg-safety-green text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors">
+                Learn How to Prepare
+            </button>
+        </div>
+    </section>
+
+    <!-- Preparedness Guides -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Disaster Preparedness Guides</h2>
+                <p class="text-xl text-gray-600">Essential knowledge for every type of natural disaster</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                <!-- Flood Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C9.38 2 7.25 4.13 7.25 6.75c0 2.57 2.01 4.65 4.63 4.74.58-.69 1.42-1.25 2.37-1.25.95 0 1.79.56 2.37 1.25 2.62-.09 4.63-2.17 4.63-4.74C21.25 4.13 19.12 2 16.5 2c-.61 0-1.19.13-1.72.36C14.25 2.13 13.17 2 12 2zm-6 14c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">Flood</h3>
+                    <p class="text-gray-600 text-sm mb-4 text-center">Learn flood safety, evacuation routes, and water damage prevention</p>
+                    <button class="w-full bg-trust-blue text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Read More</button>
+                </div>
+                
+                <!-- Earthquake Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L8 8h8l-4-6zm0 20l4-6H8l4 6zm-8-8l6-4v8l-6-4zm16 0l-6-4v8l6-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">Earthquake</h3>
+                    <p class="text-gray-600 text-sm mb-4 text-center">Drop, cover, hold on techniques and seismic safety measures</p>
+                    <button class="w-full bg-trust-blue text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Read More</button>
+                </div>
+                
+                <!-- Fire Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.016 2.016c3.891 3.234 6.984 6.609 6.984 10.969 0 3.891-3.094 6.984-6.984 6.984s-6.984-3.094-6.984-6.984c0-4.359 3.094-7.734 6.984-10.969z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">Fire</h3>
+                    <p class="text-gray-600 text-sm mb-4 text-center">Wildfire evacuation plans and home fire safety protocols</p>
+                    <button class="w-full bg-trust-blue text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Read More</button>
+                </div>
+                
+                <!-- Cyclone Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">Cyclone</h3>
+                    <p class="text-gray-600 text-sm mb-4 text-center">Hurricane tracking, shelter preparation, and wind safety</p>
+                    <button class="w-full bg-trust-blue text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Read More</button>
+                </div>
+                
+                <!-- Pandemic Card -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">Pandemic</h3>
+                    <p class="text-gray-600 text-sm mb-4 text-center">Health protocols, quarantine planning, and medical supplies</p>
+                    <button class="w-full bg-trust-blue text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Toolkit -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Emergency Toolkit Checklist</h2>
+                <p class="text-xl text-gray-600">Essential supplies every household should have ready</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <svg class="w-10 h-10 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-medium text-gray-900">First Aid Kit</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <svg class="w-10 h-10 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                        </svg>
+                    </div>
+                    <p class="font-medium text-gray-900">Flashlight</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C9.38 2 7.25 4.13 7.25 6.75c0 2.57 2.01 4.65 4.63 4.74.58-.69 1.42-1.25 2.37-1.25.95 0 1.79.56 2.37 1.25 2.62-.09 4.63-2.17 4.63-4.74C21.25 4.13 19.12 2 16.5 2c-.61 0-1.19.13-1.72.36C14.25 2.13 13.17 2 12 2z"/>
+                        </svg>
+                    </div>
+                    <p class="font-medium text-gray-900">Water (1 gal/person/day)</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <svg class="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1z"/>
+                        </svg>
+                    </div>
+                    <p class="font-medium text-gray-900">Non-perishable Food</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <svg class="w-10 h-10 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
+                        </svg>
+                    </div>
+                    <p class="font-medium text-gray-900">Power Bank</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <svg class="w-10 h-10 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.5 10c-.83 0-1.5.67-1.5 1.5v9c0 .83.67 1.5 1.5 1.5h11c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5h-11zm5 1.73c1.83 0 3.298.64 4.24 1.57.94.93 1.26 2.15 1.26 3.7H9.74c0-1.55.32-2.77 1.26-3.7.942-.93 2.41-1.57 4.24-1.57z"/>
+                        </svg>
+                    </div>
+                    <p class="font-medium text-gray-900">Emergency Radio</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button class="bg-trust-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    Download Complete Checklist
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Resources & Guidelines</h2>
+                <p class="text-xl text-gray-600">Official resources and community support</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Government Guidelines</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-trust-blue hover:underline">FEMA Disaster Preparedness</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">CDC Emergency Response</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">National Weather Service</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Red Cross Safety Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Downloadable PDFs</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-trust-blue hover:underline">Family Emergency Plan Template</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Emergency Contact List</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Evacuation Route Planner</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Supply Inventory Checklist</a></li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Community Support</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-trust-blue hover:underline">Local Emergency Services</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Volunteer Organizations</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Neighborhood Watch Groups</a></li>
+                        <li><a href="#" class="text-trust-blue hover:underline">Community Shelters</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-time Alerts -->
+    <!-- Weather search + history (insert in your Real-time Alerts section) -->
+<div class="bg-white/10 rounded-xl p-8 backdrop-blur-sm">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-2xl font-semibold">Current Weather</h3>
+    <div>
+      <input id="cityInput" type="text" placeholder="Enter city (e.g. Delhi)" class="p-2 rounded-lg border mr-2" />
+      <button id="getWeatherBtn" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors">Get</button>
+      <button id="refreshLogsBtn" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors">Refresh History</button>
+    </div>
+  </div>
+
+  <div id="weatherResult" class="mb-6 text-lg text-white/90"></div>
+
+  <div>
+    <h4 class="font-semibold mb-3">Recent Weather Queries</h4>
+    <div id="logsContainer" class="space-y-3 max-h-60 overflow-auto"></div>
+  </div>
+</div>
+
+<script>
+  // API base — when developing locally we call the backend at localhost:5000
+  const API_BASE = 'http://localhost:5000';
+
+  async function getWeather() {
+    const city = document.getElementById('cityInput').value.trim();
+    if (!city) { alert('Please enter a city'); return; }
+    document.getElementById('getWeatherBtn').disabled = true;
+    document.getElementById('weatherResult').innerText = 'Fetching...';
+
+    try {
+      const res = await fetch(`${API_BASE}/weather/${encodeURIComponent(city)}`);
+      if (!res.ok) {
+        const err = await res.json().catch(()=>({message:'unknown'}));
+        throw new Error(err.message || 'Failed');
+      }
+      const data = await res.json();
+      document.getElementById('weatherResult').innerText =
+        `🌤 ${data.city}: ${data.temperature}°C — ${data.description}`;
+      fetchLogs(); // update history
+    } catch (e) {
+      document.getElementById('weatherResult').innerText = 'Error: ' + (e.message || e);
+    } finally {
+      document.getElementById('getWeatherBtn').disabled = false;
+    }
+  }
+
+  async function fetchLogs() {
+    try {
+      const res = await fetch(`${API_BASE}/weather/logs?limit=30`);
+      const logs = await res.json();
+      const c = document.getElementById('logsContainer');
+      c.innerHTML = '';
+      if (!logs || logs.length === 0) {
+        c.innerHTML = '<div class="text-sm text-white/70">No history yet.</div>';
+        return;
+      }
+      logs.forEach(l => {
+        const el = document.createElement('div');
+        el.className = 'p-3 bg-white/5 rounded-lg';
+        el.innerHTML = `<div class="font-medium">${l.city} — ${l.temperature}°C</div>
+                        <div class="text-sm text-white/70">${l.description} · <span class="text-xs">${new Date(l.created_at).toLocaleString()}</span></div>`;
+        c.appendChild(el);
+      });
+    } catch (e) {
+      console.error('fetchLogs error', e);
+    }
+  }
+
+  document.getElementById('getWeatherBtn').addEventListener('click', getWeather);
+  document.getElementById('refreshLogsBtn').addEventListener('click', fetchLogs);
+  window.addEventListener('load', fetchLogs);
+</script>
+
+    <section class="py-16 bg-trust-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Real-time Emergency Alerts</h2>
+                <p class="text-xl opacity-90">Stay informed with live weather and emergency updates</p>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-8 backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-semibold">Current Alerts for Your Area</h3>
+                    <button class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors">
+                        Set Location
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-yellow-500/20 border border-yellow-400/30 rounded-lg p-4">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-yellow-300 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                            </svg>
+                            <div>
+                                <p class="font-semibold">Weather Advisory</p>
+                                <p class="text-sm opacity-90">Heavy rainfall expected in your area. Monitor local conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-500/20 border border-green-400/30 rounded-lg p-4">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-green-300 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <div>
+                                <p class="font-semibold">All Clear</p>
+                                <p class="text-sm opacity-90">No active emergency alerts for your region.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button class="bg-white text-trust-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Enable Push Notifications
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Community Stories</h2>
+                <p class="text-xl text-gray-600">Real experiences from people who were prepared</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-trust-blue rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">SM</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Sarah Martinez</h4>
+                            <p class="text-gray-600 text-sm">Hurricane Survivor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Having our emergency kit ready made all the difference when Hurricane Maria hit. We had everything we needed for a week without power. This site helped us prepare properly."</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-safety-green rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">JC</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">James Chen</h4>
+                            <p class="text-gray-600 text-sm">Earthquake Preparedness Advocate</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"The earthquake drills we practiced with our family saved precious seconds during the real event. Preparation isn't just about supplies—it's about knowing what to do."</p>
+                </div>
+            </div>
+            
+            <div class="text-center space-x-4">
+                <button class="bg-safety-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                    Volunteer
+                </button>
+                <button class="bg-emergency-red text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                    Donate
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-trust-blue rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">DisasterReady</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering communities through disaster preparedness education and resources.</p>
+                    
+                    <!-- Emergency Helpline -->
+                    <div class="bg-emergency-red rounded-lg p-4 mb-4">
+                        <p class="font-semibold text-sm">24/7 Emergency Helpline</p>
+                        <p class="text-2xl font-bold">1-800-HELP-NOW</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Emergency Kits</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Family Plans</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Local Resources</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Training Programs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Download Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Video Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community Forum</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Expert Advice</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">Subscribe to our newsletter for emergency updates and preparedness tips.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 DisasterReady. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add some interactivity to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Get Help Now')) {
+                    alert('Emergency services contacted! Help is on the way.');
+                } else if (this.textContent.includes('Learn How to Prepare')) {
+                    alert('Redirecting to comprehensive preparedness guide...');
+                } else if (this.textContent.includes('Read More')) {
+                    alert('Loading detailed disaster preparedness information...');
+                } else if (this.textContent.includes('Download')) {
+                    alert('Downloading resource... Check your downloads folder.');
+                } else if (this.textContent.includes('Volunteer')) {
+                    alert('Thank you for your interest in volunteering! Redirecting to volunteer portal...');
+                } else if (this.textContent.includes('Donate')) {
+                    alert('Thank you for supporting disaster preparedness! Redirecting to donation page...');
+                } else if (this.textContent.includes('Set Location')) {
+                    alert('Location services activated. We\'ll provide alerts for your area.');
+                } else if (this.textContent.includes('Enable Push Notifications')) {
+                    alert('Push notifications enabled! You\'ll receive emergency alerts.');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97bf0d66532b59cf',t:'MTc1NzM0MDg2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
